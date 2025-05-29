@@ -12,15 +12,15 @@ function App() {
   const [bestScore, setBestScore] = useState(0);
 
   useEffect(() => {
-    setImages([]);
     const key = () =>
       getImages().then((res) => {
+        console.log(res);
         res.map(async (val) => {
           const result = await val;
           setImages((prev) => [...prev, result]);
         });
       });
-    return key;
+    key();
   }, []);
 
   function clickTileHandler(id) {
